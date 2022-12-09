@@ -7,11 +7,26 @@ import UserDetailsPage from '../pages/UserDetailsPage'
 
 const AppRouter = () => (
   <Routes>
-    <Route path="/" element={<MainPage />} />
-    <Route path="/about" element={<AboutPage />} />
-    <Route path="/users" element={<Users />} />
-    <Route path="/users/:id" element={<UserDetailsPage />} />
-    <Route path="/*" element={<ErrorPage />} />
+    <Route
+      path="/"
+      element={<MainPage />}
+    />
+    <Route
+      path="/about"
+      element={<AboutPage />}
+    />
+    <Route
+      path="/users"
+      element={<Users />}
+    />
+    <Route
+      path="/users/:id"
+      element={<UserDetailsPage />}
+    />
+    <Route
+      path="/*"
+      element={<ErrorPage />}
+    />
   </Routes>
 )
 

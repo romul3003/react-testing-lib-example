@@ -40,7 +40,10 @@ import Navbar from './components/Navbar'
 import AppRouter from './router/AppRouter'
 
 const App = () => (
-  <div className="container" data-testid="app">
+  <div
+    className="container"
+    data-testid="app"
+  >
     <Navbar />
     <AppRouter />
   </div>
