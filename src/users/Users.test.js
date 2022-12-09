@@ -1,6 +1,10 @@
 /* eslint-disable no-magic-numbers */
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import axios from 'axios'
+import { MemoryRouter } from 'react-router-dom'
+
+import { renderWithRouter } from '../tests/helpers/renderWithRouter'
 
 import Users from './Users'
 
@@ -28,13 +32,32 @@ describe('TEST APP', () => {
     }
   })
 
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   test('Should render Users', async () => {
     axios.get.mockReturnValue(response)
-    render(<Users />)
+    render(
+      <MemoryRouter>
+        <Users />
+      </MemoryRouter>,
+    )
 
     const users = await screen.findAllByTestId('user-item')
     expect(users.length).toBe(3)
     expect(axios.get).toBeCalledTimes(1)
+  })
+
+  test('Should redirect to details page', async () => {
+    axios.get.mockReturnValue(response)
+    renderWithRouter(<Users />)
+
+    const users = await screen.findAllByTestId('user-item')
+    expect(users.length).toBe(3)
+
+    userEvent.click(users[0])
+    expect(screen.getByTestId('user-page')).toBeInTheDocument()
     // screen.debug()
   })
 })

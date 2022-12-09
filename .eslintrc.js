@@ -87,7 +87,7 @@ module.exports = {
     'react/destructuring-assignment': [1],
     'react/jsx-one-expression-per-line': [2],
     'react/jsx-max-props-per-line': [2, {
-      maximum: 1, when: 'always',
+      maximum: 2, when: 'always',
     }],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.tsx'] }],
     'react/function-component-definition': [2, {
